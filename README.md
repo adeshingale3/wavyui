@@ -1,19 +1,44 @@
-# shadcn-ui-lib-starter
-A simple starter kit to build your own shadcn-ui library using components from https://ui.shadcn.com/docs/components
+# Wavy UI
 
-### Features
-- Tree-shakeable (components you don't use won't be included in your bundle)
-- Dark mode support
-- Override library styles with your own using tailwindcss or your own css
+A quick library starter for React with Tailwind CSS, Vite, TypeScript and Shadcn-ui components.
 
-### Wanna see how this library works ?
+## Installation
 
-Run the example project and play around
-
-The example project has the published npm package linked so you do not really have to do a local npm link.
-
+```bash
+npm install wavy-ui
 ```
-cd examples/vite-tailwind-app
-npm install
-npm run dev
+
+## Usage
+
+1. Import the CSS in your app's entry file (e.g., `src/index.tsx` or `src/App.tsx`):
+
+```tsx
+import 'wavy-ui/dist/style.css';
+```
+
+2. Import and use components:
+
+```tsx
+import { Button } from 'wavy-ui';
+
+function App() {
+  return (
+    <Button>Click me</Button>
+  );
+}
+```
+
+## Requirements
+
+Make sure you have Tailwind CSS installed and configured in your project. Add the following to your `tailwind.config.js`:
+
+```js
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: [
+    './src/**/*.{js,jsx,ts,tsx}',
+    './node_modules/wavy-ui/**/*.{js,jsx,ts,tsx}'
+  ],
+  // ... rest of your config
+}
 ```

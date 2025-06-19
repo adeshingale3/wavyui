@@ -5,7 +5,23 @@ module.exports = {
   darkMode: ["class"],
   content: ["./src/**/*.{js,ts,jsx,tsx}"],
   safelist: [
-    'dark'
+    'dark',
+    'bg-gradient-to-r',
+    'from-white',
+    'to-black',
+    'text-white',
+    'bg-[length:400%_auto]',
+    'bg-right',
+    'border',
+    'border-white',
+    'hover:bg-left',
+    'transition-all',
+    'duration-1200',
+    'hover:text-black',
+    'px-6',
+    'py-3',
+    'rounded-3xl',
+    'hover:border-black',
   ],
   theme: {
     container: {
