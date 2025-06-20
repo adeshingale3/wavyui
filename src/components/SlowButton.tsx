@@ -1,35 +1,56 @@
-
-import * as React from "react"
-import { Slot } from "@radix-ui/react-slot"
-import { cva, type VariantProps } from "class-variance-authority"
-
-import { cn } from "../lib/utils"
+import * as React from "react";
+import { Slot } from "@radix-ui/react-slot";
+import { cva, type VariantProps } from "class-variance-authority";
+import { cn } from "../lib/utils";
 
 const buttonVariants = cva(
-  "wavy-ui bg-gradient-to-r from-white to-black text-white bg-[length:400%_auto] bg-right border border-white hover:bg-left transition-all duration-1200 hover:text-black px-6 py-3 rounded-3xl hover:border-black",
-  
-)
+  "relative overflow-hidden px-6 py-1 rounded-2xl border border-white text-black \
+   bg-gradient-to-r from-black via-black to-white transition-all duration-[1200ms] \
+   hover:text-white hover:border-black",
+  {
+    variants: {},
+    defaultVariants: {},
+  }
+);
+
+// base style
+const baseButtonStyles: React.CSSProperties = {
+  backgroundImage: "linear-gradient(to right, black 50%, white 50%)",
+  backgroundSize: "400% auto",
+  backgroundPosition: "right",
+  backgroundColor: "black", // fallback color
+  transition: "all 1200ms ease-in-out",
+};
+
 
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonVariants> {
-  asChild?: boolean
+  asChild?: boolean;
 }
 
 const SlowButton = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, asChild, ...props }, ref) => {
-    const Comp = asChild ? Slot : "button"
+  ({ className, asChild, style, ...props }, ref) => {
+    const Comp = asChild ? Slot : "button";
+    const [hovered, setHovered] = React.useState(false);
+
     return (
       <Comp
-        className={cn('wavy-ui', buttonVariants({className}))}
         ref={ref}
+        className={cn("wavy-ui", buttonVariants(), className)}
+        style={{
+          ...baseButtonStyles,
+          backgroundPosition: hovered ? "left" : "right",
+          ...style, // allow user to override if needed
+        }}
+        onMouseEnter={() => setHovered(true)}
+        onMouseLeave={() => setHovered(false)}
         {...props}
       />
-    )
+    );
   }
-)
-SlowButton.displayName = "SlowButton"
+);
 
-export { SlowButton, buttonVariants }
+SlowButton.displayName = "SlowButton";
 
-
+export { SlowButton, buttonVariants };
