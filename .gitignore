@@ -41,8 +41,7 @@ build/Release
 # Dependency directories
 node_modules/
 jspm_packages/
-vite.config.ts.timestamp-*.mjs
-
+vite.config.ts.timestamp-1750417020091-aa6999eaeedac.mjs
 # Snowpack dependency directory (https://snowpack.dev/)
 web_modules/
 
