@@ -28,17 +28,4 @@ function App() {
 }
 ```
 
-## Requirements
 
-Make sure you have Tailwind CSS installed and configured in your project. Add the following to your `tailwind.config.js`:
-
-```js
-/** @type {import('tailwindcss').Config} */
-module.exports = {
-  content: [
-    './src/**/*.{js,jsx,ts,tsx}',
-    './node_modules/wavy-ui/**/*.{js,jsx,ts,tsx}'
-  ],
-  // ... rest of your config
-}
-```
